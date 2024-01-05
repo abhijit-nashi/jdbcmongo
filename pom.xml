@@ -30,13 +30,6 @@
     <artifactId>mongo-java-driver</artifactId>
     <version>3.12.12</version> <!-- Use the latest version available -->
     </dependency>
-
-    
-    <dependency>
-    <groupId>org.seleniumhq.selenium</groupId>
-    <artifactId>selenium-java</artifactId>
-    <version>4.16.1</version>
-</dependency>
   </dependencies>
 
   <build>
