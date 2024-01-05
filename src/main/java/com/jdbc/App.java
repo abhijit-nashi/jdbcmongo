@@ -18,13 +18,13 @@ public class App {
             // Create a MongoDB client
             MongoClient mongoClient = MongoClients.create(connectionString);
 
-            // Connect to the "test" database
+            // Connect to your database
             MongoDatabase database = mongoClient.getDatabase("books_store");
 
             // Perform operations with the database
             System.out.println("Connected");
             MongoCollection<Document> collection = database.getCollection("Author");
-            /*
+            
             // Insert a single document
             Document document = new Document("fname", "John Doe")
                     .append("age", 30)
@@ -38,10 +38,10 @@ public class App {
             Document document2 = new Document("fname", "Bob")
                     .append("age", 35)
                     .append("city", "Los Angeles");
-            collection.insertMany(List.of(document1, document2));*/
+            collection.insertMany(List.of(document1, document2));
 
             //Read Query Documents
-            /* 
+            
             FindIterable<Document> documents = collection.find();
             try (MongoCursor<Document> cursor = documents.iterator()) {
                 while (cursor.hasNext()) {
@@ -50,17 +50,17 @@ public class App {
             }
 
             // Find documents with a specific condition
-            FindIterable<Document> filteredDocuments = collection.find(new Document("age", new Document("$gt", 25)));*/
+            FindIterable<Document> filteredDocuments = collection.find(new Document("age", new Document("$gt", 25)));
             //Updating Documents
             /*collection.updateOne(new Document("fname", "John Doe"), new Document("$set", new Document("age", 31)));
 
             // Update multiple documents
-            collection.updateMany(new Document("age", new Document("$lt", 30)), new Document("$inc", new Document("age", 1)));*/
+            collection.updateMany(new Document("age", new Document("$lt", 30)), new Document("$inc", new Document("age", 1)));
             //Delete Documents
-            //collection.deleteOne(new Document("fname", "John Doe"));
+            collection.deleteOne(new Document("fname", "John Doe"));
 
             // Delete multiple documents
-            //collection.deleteMany(new Document("age", new Document("$gte", 70)));
+            collection.deleteMany(new Document("age", new Document("$gte", 70)));
             // Close the MongoDB client
             mongoClient.close();
         } catch (MongoException e) {
